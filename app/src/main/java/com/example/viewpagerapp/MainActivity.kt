@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var viewPager: ViewPager2
     lateinit var pagerAdapter: MyPagerAdapter
-    lateinit var tabLayout:TabLayout
+    lateinit var tabLayout: TabLayout
+    var tabsArray = arrayOf("MyApp", "Coding", "Last Advice")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +38,13 @@ class MainActivity : AppCompatActivity() {
 
         // 3- Connecting the adapter with ViewPager2
 
-        viewPager.adapter =pagerAdapter
+        viewPager.adapter = pagerAdapter
         tabLayout = findViewById(R.id.tab_layout)
-        TabLayoutMediator(tabLayout,viewPager){ tab,position ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
 
-            tab.text = "Tab ${position+1}"
+//            tab.text = "Tab ${position + 1}"
+
+            tab.text = tabsArray[position]
         }.attach()
     }
 }
